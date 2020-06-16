@@ -1,7 +1,8 @@
 export class Employee {
     _id: string;
     name: string;
-    position: string;
-    office: string;
+    department: string;
+    date:Date;
+    performance:number;
     salary: number;
 }

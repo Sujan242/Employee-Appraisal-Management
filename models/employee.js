@@ -4,15 +4,20 @@ var Employee = mongoose.model('Employee', {
     name: { 
     	type: String
     	 },
-    position: { 
+    department: { 
     	type: String
     	 },
-    office: { 
-    	type: String
+    date: { 
+    	type: Date
     	 },
+    performance :{
+    	type:Number
+    },
     salary: { 
     	type: Number 
     }
+
+
 });
 
 module.exports = { Employee };

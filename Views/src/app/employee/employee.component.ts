@@ -19,7 +19,11 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
     this.refreshEmployeeList();
+
+
   }
+
+
 
   resetForm(form?: NgForm) {
     if (form)
@@ -27,13 +31,15 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.selectedEmployee = {
       _id: "",
       name: "",
-      position: "",
-      office: "",
+      department: "",
+      date:null,
+      performance: null,
       salary: null
     }
   }
 
   onSubmit(form: NgForm) {
+    console.log(form)
     if (form.value._id == "") {
       this.employeeService.postEmployee(form.value).subscribe((res) => {
         this.resetForm(form);
@@ -47,7 +53,28 @@ export class EmployeeComponent implements OnInit {
         this.refreshEmployeeList();
         M.toast({ html: 'Updated successfully', classes: 'rounded' });
       });
+
     }
+    var content =Array.from(document.getElementsByClassName('content') as HTMLCollectionOf<HTMLElement>)
+    content[0].style.display = "none";
+  }
+
+  collapse()
+  {
+    // var coll = document.getElementsByClassName("collapsible");
+    // var content = document.getElementsByClassName("content");
+    // content.setAttribute("style", "display:block;");
+
+    var content =Array.from(document.getElementsByClassName('content') as HTMLCollectionOf<HTMLElement>)
+    // content[0].style.display="block";
+    // content[0].style.backgroundColor=pink;
+
+    if (content[0].style.display === "block") {
+      content[0].style.display = "none";
+    } else {
+      content[0].style.display = "block";
+    }
+    
   }
 
   refreshEmployeeList() {
@@ -57,6 +84,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   onEdit(emp: Employee) {
+    this.collapse();
     this.employeeService.selectedEmployee = emp;
   }
 
