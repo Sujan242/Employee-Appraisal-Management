@@ -8,7 +8,7 @@ var Employee = mongoose.model('Employee', {
     	type: String
     	 },
     date: { 
-    	type: Date
+    	type: String
     	 },
     performance :{
     	type:Number

@@ -32,7 +32,7 @@ export class EmployeeComponent implements OnInit {
       _id: "",
       name: "",
       department: "",
-      date:null,
+      date:"",
       performance: null,
       salary: null
     }
